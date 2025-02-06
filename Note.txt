@@ -1,0 +1,31 @@
+I Use pipenv to maintain dependecies if you want to run this project locally 
+Prepare the virtual environment and install all dependencies using the following commands. 
+
+1) cd LittleLemon
+
+2) pipenv shell
+
+3)pipenv install 
+
+4) python manage.py makemigrations 
+
+5) python manage.py migrate
+
+6) python manage.py runserver
+
+
+Admin Credential:
+Username:admin
+Password:Text@0033
+Member Credential:
+username: test2 
+password: "pass@12345
+
+URLS FOR API Documentation are:
+Redoc:
+/api/schema/redoc/ 
+Swagger:
+/api/docs/
+
+Download yaml file:
+/api/schema/
