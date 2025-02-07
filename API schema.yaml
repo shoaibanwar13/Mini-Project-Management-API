@@ -5,12 +5,12 @@ info:
 paths:
   /api/auth/jwt/create/:
     post:
-      operationId: api_auth_jwt_create_create
+      operationId: auth_jwt_create_create
       description: |-
         Takes a set of user credentials and returns an access and refresh JSON web
         token pair to prove the authentication of those credentials.
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -32,12 +32,12 @@ paths:
           description: ''
   /api/auth/jwt/refresh/:
     post:
-      operationId: api_auth_jwt_refresh_create
+      operationId: auth_jwt_refresh_create
       description: |-
         Takes a refresh type JSON web token and returns an access type JSON web
         token if the refresh token is valid.
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -59,12 +59,12 @@ paths:
           description: ''
   /api/auth/jwt/verify/:
     post:
-      operationId: api_auth_jwt_verify_create
+      operationId: auth_jwt_verify_create
       description: |-
         Takes a token and indicates if it is valid.  This view provides no
         information about a token's fitness for a particular use.
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -86,7 +86,7 @@ paths:
           description: ''
   /api/auth/users/:
     get:
-      operationId: api_auth_users_list
+      operationId: auth_users_list
       parameters:
       - name: page
         required: false
@@ -95,7 +95,7 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - auth
       security:
       - jwtAuth: []
       responses:
@@ -106,9 +106,9 @@ paths:
                 $ref: '#/components/schemas/PaginatedUserList'
           description: ''
     post:
-      operationId: api_auth_users_create
+      operationId: auth_users_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -133,7 +133,7 @@ paths:
           description: ''
   /api/auth/users/{id}/:
     get:
-      operationId: api_auth_users_retrieve
+      operationId: auth_users_retrieve
       parameters:
       - in: path
         name: id
@@ -142,7 +142,7 @@ paths:
         description: A unique integer value identifying this user.
         required: true
       tags:
-      - api
+      - auth
       security:
       - jwtAuth: []
       responses:
@@ -153,7 +153,7 @@ paths:
                 $ref: '#/components/schemas/User'
           description: ''
     put:
-      operationId: api_auth_users_update
+      operationId: auth_users_update
       parameters:
       - in: path
         name: id
@@ -162,7 +162,7 @@ paths:
         description: A unique integer value identifying this user.
         required: true
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -184,7 +184,7 @@ paths:
                 $ref: '#/components/schemas/User'
           description: ''
     patch:
-      operationId: api_auth_users_partial_update
+      operationId: auth_users_partial_update
       parameters:
       - in: path
         name: id
@@ -193,7 +193,7 @@ paths:
         description: A unique integer value identifying this user.
         required: true
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -215,7 +215,7 @@ paths:
                 $ref: '#/components/schemas/User'
           description: ''
     delete:
-      operationId: api_auth_users_destroy
+      operationId: auth_users_destroy
       parameters:
       - in: path
         name: id
@@ -224,7 +224,7 @@ paths:
         description: A unique integer value identifying this user.
         required: true
       tags:
-      - api
+      - auth
       security:
       - jwtAuth: []
       responses:
@@ -232,9 +232,9 @@ paths:
           description: No response body
   /api/auth/users/activation/:
     post:
-      operationId: api_auth_users_activation_create
+      operationId: auth_users_activation_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -259,9 +259,9 @@ paths:
           description: ''
   /api/auth/users/me/:
     get:
-      operationId: api_auth_users_me_retrieve
+      operationId: auth_users_me_retrieve
       tags:
-      - api
+      - auth
       security:
       - jwtAuth: []
       responses:
@@ -272,9 +272,9 @@ paths:
                 $ref: '#/components/schemas/User'
           description: ''
     put:
-      operationId: api_auth_users_me_update
+      operationId: auth_users_me_update
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -296,9 +296,9 @@ paths:
                 $ref: '#/components/schemas/User'
           description: ''
     patch:
-      operationId: api_auth_users_me_partial_update
+      operationId: auth_users_me_partial_update
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -320,9 +320,9 @@ paths:
                 $ref: '#/components/schemas/User'
           description: ''
     delete:
-      operationId: api_auth_users_me_destroy
+      operationId: auth_users_me_destroy
       tags:
-      - api
+      - auth
       security:
       - jwtAuth: []
       responses:
@@ -330,9 +330,9 @@ paths:
           description: No response body
   /api/auth/users/resend_activation/:
     post:
-      operationId: api_auth_users_resend_activation_create
+      operationId: auth_users_resend_activation_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -357,9 +357,9 @@ paths:
           description: ''
   /api/auth/users/reset_password/:
     post:
-      operationId: api_auth_users_reset_password_create
+      operationId: auth_users_reset_password_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -384,9 +384,9 @@ paths:
           description: ''
   /api/auth/users/reset_password_confirm/:
     post:
-      operationId: api_auth_users_reset_password_confirm_create
+      operationId: auth_users_reset_password_confirm_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -411,9 +411,9 @@ paths:
           description: ''
   /api/auth/users/reset_username/:
     post:
-      operationId: api_auth_users_reset_username_create
+      operationId: auth_users_reset_username_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -438,9 +438,9 @@ paths:
           description: ''
   /api/auth/users/reset_username_confirm/:
     post:
-      operationId: api_auth_users_reset_username_confirm_create
+      operationId: auth_users_reset_username_confirm_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -465,9 +465,9 @@ paths:
           description: ''
   /api/auth/users/set_password/:
     post:
-      operationId: api_auth_users_set_password_create
+      operationId: auth_users_set_password_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -491,9 +491,9 @@ paths:
           description: ''
   /api/auth/users/set_username/:
     post:
-      operationId: api_auth_users_set_username_create
+      operationId: auth_users_set_username_create
       tags:
-      - api
+      - auth
       requestBody:
         content:
           application/json:
@@ -517,7 +517,7 @@ paths:
           description: ''
   /api/projects/:
     get:
-      operationId: api_projects_list
+      operationId: projects_list
       parameters:
       - name: page
         required: false
@@ -526,7 +526,7 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - projects
       security:
       - jwtAuth: []
       responses:
@@ -537,9 +537,9 @@ paths:
                 $ref: '#/components/schemas/PaginatedProjectList'
           description: ''
     post:
-      operationId: api_projects_create
+      operationId: projects_create
       tags:
-      - api
+      - projects
       requestBody:
         content:
           application/json:
@@ -563,7 +563,7 @@ paths:
           description: ''
   /api/projects/{id}/:
     get:
-      operationId: api_projects_retrieve
+      operationId: projects_retrieve
       parameters:
       - in: path
         name: id
@@ -572,7 +572,7 @@ paths:
         description: A unique integer value identifying this project.
         required: true
       tags:
-      - api
+      - projects
       security:
       - jwtAuth: []
       responses:
@@ -583,7 +583,7 @@ paths:
                 $ref: '#/components/schemas/Project'
           description: ''
     put:
-      operationId: api_projects_update
+      operationId: projects_update
       parameters:
       - in: path
         name: id
@@ -592,7 +592,7 @@ paths:
         description: A unique integer value identifying this project.
         required: true
       tags:
-      - api
+      - projects
       requestBody:
         content:
           application/json:
@@ -615,7 +615,7 @@ paths:
                 $ref: '#/components/schemas/Project'
           description: ''
     patch:
-      operationId: api_projects_partial_update
+      operationId: projects_partial_update
       parameters:
       - in: path
         name: id
@@ -624,7 +624,7 @@ paths:
         description: A unique integer value identifying this project.
         required: true
       tags:
-      - api
+      - projects
       requestBody:
         content:
           application/json:
@@ -646,7 +646,7 @@ paths:
                 $ref: '#/components/schemas/Project'
           description: ''
     delete:
-      operationId: api_projects_destroy
+      operationId: projects_destroy
       parameters:
       - in: path
         name: id
@@ -655,7 +655,7 @@ paths:
         description: A unique integer value identifying this project.
         required: true
       tags:
-      - api
+      - projects
       security:
       - jwtAuth: []
       responses:
@@ -663,7 +663,7 @@ paths:
           description: No response body
   /api/schema/:
     get:
-      operationId: api_schema_retrieve
+      operationId: schema_retrieve
       description: |-
         OpenApi3 schema for this API. Format can be selected via content negotiation.
 
@@ -782,7 +782,7 @@ paths:
           - zh-hans
           - zh-hant
       tags:
-      - api
+      - schema
       security:
       - jwtAuth: []
       - {}
@@ -808,7 +808,7 @@ paths:
           description: ''
   /api/tasks/:
     get:
-      operationId: api_tasks_list
+      operationId: tasks_list
       parameters:
       - name: page
         required: false
@@ -817,7 +817,7 @@ paths:
         schema:
           type: integer
       tags:
-      - api
+      - tasks
       security:
       - jwtAuth: []
       responses:
@@ -828,9 +828,9 @@ paths:
                 $ref: '#/components/schemas/PaginatedTaskList'
           description: ''
     post:
-      operationId: api_tasks_create
+      operationId: tasks_create
       tags:
-      - api
+      - tasks
       requestBody:
         content:
           application/json:
@@ -854,7 +854,7 @@ paths:
           description: ''
   /api/tasks/{id}/:
     get:
-      operationId: api_tasks_retrieve
+      operationId: tasks_retrieve
       parameters:
       - in: path
         name: id
@@ -863,7 +863,7 @@ paths:
         description: A unique integer value identifying this task.
         required: true
       tags:
-      - api
+      - tasks
       security:
       - jwtAuth: []
       responses:
@@ -874,7 +874,7 @@ paths:
                 $ref: '#/components/schemas/Task'
           description: ''
     put:
-      operationId: api_tasks_update
+      operationId: tasks_update
       parameters:
       - in: path
         name: id
@@ -883,7 +883,7 @@ paths:
         description: A unique integer value identifying this task.
         required: true
       tags:
-      - api
+      - tasks
       requestBody:
         content:
           application/json:
@@ -906,7 +906,7 @@ paths:
                 $ref: '#/components/schemas/Task'
           description: ''
     patch:
-      operationId: api_tasks_partial_update
+      operationId: tasks_partial_update
       parameters:
       - in: path
         name: id
@@ -915,7 +915,7 @@ paths:
         description: A unique integer value identifying this task.
         required: true
       tags:
-      - api
+      - tasks
       requestBody:
         content:
           application/json:
@@ -937,7 +937,7 @@ paths:
                 $ref: '#/components/schemas/Task'
           description: ''
     delete:
-      operationId: api_tasks_destroy
+      operationId: tasks_destroy
       parameters:
       - in: path
         name: id
@@ -946,7 +946,7 @@ paths:
         description: A unique integer value identifying this task.
         required: true
       tags:
-      - api
+      - tasks
       security:
       - jwtAuth: []
       responses:
@@ -954,7 +954,8 @@ paths:
           description: No response body
   /api/tasks/{id}/update_status/:
     patch:
-      operationId: api_tasks_update_status_partial_update
+      operationId: tasks_update_status_partial_update
+      description: Allow only assigned members to update the status of their tasks.
       parameters:
       - in: path
         name: id
@@ -963,7 +964,7 @@ paths:
         description: A unique integer value identifying this task.
         required: true
       tags:
-      - api
+      - tasks
       requestBody:
         content:
           application/json:
@@ -986,12 +987,12 @@ paths:
           description: ''
   /api/token/:
     post:
-      operationId: api_token_create
+      operationId: token_create
       description: |-
         Takes a set of user credentials and returns an access and refresh JSON web
         token pair to prove the authentication of those credentials.
       tags:
-      - api
+      - token
       requestBody:
         content:
           application/json:
@@ -1013,12 +1014,12 @@ paths:
           description: ''
   /api/token/refresh/:
     post:
-      operationId: api_token_refresh_create
+      operationId: token_refresh_create
       description: |-
         Takes a refresh type JSON web token and returns an access type JSON web
         token if the refresh token is valid.
       tags:
-      - api
+      - token
       requestBody:
         content:
           application/json:
@@ -1163,6 +1164,9 @@ components:
           $ref: '#/components/schemas/StatusEnum'
         project:
           type: integer
+        assigned_to:
+          type: integer
+          nullable: true
     PatchedUser:
       type: object
       properties:
@@ -1258,6 +1262,9 @@ components:
           $ref: '#/components/schemas/StatusEnum'
         project:
           type: integer
+        assigned_to:
+          type: integer
+          nullable: true
       required:
       - description
       - id
