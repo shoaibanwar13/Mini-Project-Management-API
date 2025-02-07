@@ -1,7 +1,7 @@
 I Use pipenv to maintain dependecies if you want to run this project locally 
 Prepare the virtual environment and install all dependencies using the following commands. 
 
-1) cd LittleLemon
+1) cd ProjectManagementApi
 
 2) pipenv shell
 
@@ -12,7 +12,9 @@ Prepare the virtual environment and install all dependencies using the following
 5) python manage.py migrate
 
 6) python manage.py runserver
+Otherwise you can run this project by install requirements.txt dependecies using this command:
 
+pip install -r requirements.txt
 
 Admin Credential:
 Username:admin

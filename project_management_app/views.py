@@ -18,13 +18,30 @@ class TaskViewset(viewsets.ModelViewSet):
     serializer_class=TaskSerializer
     permission_classes=[IsMemberOrAdminOnly]
     pagination_class = PageNumberPagination  
-    @action(detail=True,methods=["PATCH"])
-    def update_status(self,request,pk=None):
-        task=self.get_object()
-        if request.user.role=="member":
-            task.status=request.data.get('status',task.status)
-            task.save()
-            return Response({'status':'updated'})
-        return Response({'error':"Not Allowd"},status=403)
+    def get_queryset(self):
+        if self.request.user.role == "member":
+            return Task.objects.filter(assigned_to=self.request.user)
+        return Task.objects.all()
+    @action(detail=True, methods=["PATCH"])
+    def update_status(self, request, pk=None):
+        """Allow only assigned members to update the status of their tasks."""
+        task = self.get_object()
+
+        # Ensure user is assigned to this task
+        if task.assigned_to != request.user:
+            return Response({'error': "You can only update your assigned tasks."}, status=403)
+
+        # Validate new status
+        new_status = request.data.get('status')
+        valid_statuses = dict(Task.STATUS_CHOICES)
+
+        if new_status not in valid_statuses:
+            return Response({'error': 'Invalid status value'}, status=400)
+
+        # Update status
+        task.status = new_status
+        task.save(update_fields=['status'])
+
+        return Response({'status': 'updated', 'new_status': new_status})
 
 # Create your views here.
